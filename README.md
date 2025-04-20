@@ -40,7 +40,7 @@ The conversion maintains all the original design elements, animations, and funct
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/jmtech-centre.git
+git clone https://github.com/AlfredPur01/JMTECH-CENTRE-NEXT.git
 cd jmtech-centre
 ```
 
