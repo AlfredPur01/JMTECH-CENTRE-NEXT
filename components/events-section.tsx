@@ -15,7 +15,7 @@ export default function EventsSection() {
         <div className="flex flex-col md:flex-row rounded-lg overflow-hidden shadow-lg">
           <div className="w-full md:w-1/2">
             <Image
-              src="/images/robotics.JPG"
+              src="/images/robotics.jpg"
               alt="Robotics Workshop"
               width={830}
               height={942}

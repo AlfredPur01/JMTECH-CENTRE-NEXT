@@ -34,11 +34,11 @@ export default function HeroSection() {
               {/* Hero image */}
               <div className="relative z-20 rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/images/Homebg.png"
+                  src="/images/Hero.png"
                   alt="Students working on computers"
-                  width={600}
+                  width={550}
                   height={400}
-                  className="rounded-lg w-full"
+                  className="rounded-lg "
                 />
 
                 {/* Quote box positioned on the image */}

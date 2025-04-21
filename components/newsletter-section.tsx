@@ -40,11 +40,11 @@ export default function NewsletterSection() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
               <Image
-                src="/images/newsletter.jpg"
+                src="/images/news.jpg"
                 alt="Newsletter Flier"
                 width={600}
                 height={400}
-                className="w-full h-full object-cover"
+                className=" object-cover"
               />
             </div>
             <div className="p-6 md:p-8 lg:p-10">
