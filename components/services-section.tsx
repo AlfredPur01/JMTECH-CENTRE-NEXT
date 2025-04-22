@@ -22,43 +22,50 @@ function ServiceCard({ title, image, features, linkText, linkHref }: ServiceCard
   }, [])
 
   return (
-    <div className="perspective-1000 h-[300px] mb-8">
+    <div
+      className="group relative mb-8 [perspective:1000px] w-full"
+      style={{ height: "auto", minHeight: "360px" }}
+    >
       <div
-        className={`relative w-full h-full text-center transition-transform duration-600 transform-style-preserve-3d shadow-md rounded-lg ${isFlipped ? "rotate-y-180" : ""}`}
+        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+          isTouchDevice
+            ? isFlipped
+              ? "rotate-y-180"
+              : ""
+            : "group-hover:rotate-y-180"
+        }`}
       >
-        {/* Front side */}
-        <div className="absolute w-full h-full backface-hidden rounded-lg overflow-hidden">
-          <div className="bg-white h-full flex flex-col">
+        {/* Front Side */}
+        <div className="absolute w-full h-full rounded-lg overflow-hidden bg-white [backface-visibility:hidden] z-20">
+          <div className="flex flex-col h-full">
             <Image
               src={image || "/placeholder.svg"}
               alt={title}
-              width={400}
-              height={200}
-              className="w-full h-[200px] object-cover"
+              width={500}
+              height={300}
+              className="w-full h-[220px] object-cover"
             />
-            <h4 className="py-4 px-2 m-0 bg-white text-[#0a0a2e] font-semibold">{title}</h4>
-
-            {isTouchDevice && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setIsFlipped(!isFlipped)
-                }}
-                className="absolute bottom-2 right-2 bg-white/70 border-none rounded-full w-8 h-8 flex items-center justify-center z-10 cursor-pointer"
-                aria-label="Flip card"
-              >
-                <RefreshCw className="w-4 h-4" />
-              </button>
-            )}
+            <div className="p-4 flex-1 flex items-center justify-between relative">
+              <h4 className="text-lg font-semibold text-[#0a0a2e]">{title}</h4>
+              {isTouchDevice && (
+                <button
+                  onClick={() => setIsFlipped(!isFlipped)}
+                  className="absolute bottom-2 right-2 bg-white/80 border border-gray-300 shadow rounded-full w-8 h-8 flex items-center justify-center z-30"
+                  aria-label="Flip card"
+                >
+                  <RefreshCw className="w-4 h-4 text-[#0a0a2e]" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Back side */}
-        <div className="absolute w-full h-full backface-hidden rounded-lg overflow-hidden bg-[#DBDBDB] text-[#2B3F4B] rotate-y-180 p-5 flex flex-col justify-center">
-          <h4 className="mb-5 text-[#e50000] font-semibold">{title}</h4>
-          <ul className="list-none p-0 mb-5 text-left">
+        {/* Back Side */}
+        <div className="absolute w-full h-full rounded-lg overflow-hidden bg-[#DBDBDB] text-[#2B3F4B] [backface-visibility:hidden] [transform:rotateY(180deg)] p-5 flex flex-col justify-center z-10">
+          <h4 className="mb-4 text-[#e50000] font-semibold text-lg">{title}</h4>
+          <ul className="list-none p-0 mb-5 text-left space-y-2">
             {features.map((feature, index) => (
-              <li key={index} className="mb-2 flex items-start">
+              <li key={index} className="flex items-start">
                 <CheckCircle className="text-[#e50000] mr-2 mt-1 flex-shrink-0 w-4 h-4" />
                 <span>{feature}</span>
               </li>
@@ -66,7 +73,7 @@ function ServiceCard({ title, image, features, linkText, linkHref }: ServiceCard
           </ul>
           <Link
             href={linkHref}
-            className="mt-auto inline-block bg-[#e50000] text-white border-none py-2 px-5 rounded-3xl transition-all duration-300 hover:bg-[#cc0000] hover:text-white hover:translate-y-[-3px]"
+            className="mt-auto inline-block bg-[#e50000] text-white py-2 px-5 rounded-3xl transition-all duration-300 hover:bg-[#cc0000] hover:-translate-y-1"
           >
             {linkText}
           </Link>
@@ -82,8 +89,7 @@ export default function ServicesSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-center text-3xl font-bold mb-2">Our Services</h2>
         <p className="text-center mb-12">
-          We provide comprehensive tech training and support to empower Africa&apos;s next generation of IT
-          professionals
+          We provide comprehensive tech training and support to empower Africa&apos;s next generation of IT professionals.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,7 +125,11 @@ export default function ServicesSection() {
           <ServiceCard
             title="Consultation"
             image="/images/services/Consultation.JPG"
-            features={["Tailored migration strategies", "Visa application support", "Career and education planning"]}
+            features={[
+              "Tailored migration strategies",
+              "Visa application support",
+              "Career and education planning",
+            ]}
             linkText="Book a session"
             linkHref="https://docs.google.com/forms/d/e/1FAIpQLSfAV16hmLRAigJjA-f10daSJC8151MG0M7MVabEUhL9ZYGGLQ/viewform?usp=dialo"
           />
